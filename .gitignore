@@ -1,0 +1,35 @@
+# --- Python Specific ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# --- Data and Models ---
+# Ignoring the raw image dataset to keep the repo light
+# (Usually, datasets are managed via DVC or hosted on S3/Drive)
+data/dataset-resized/
+
+# If your 'model' folder contains large .h5, .pth, or .pkl files:
+model/*.h5
+model/*.pth
+model/*.pkl
+model/*.onnx
+
+# --- Database ---
+# Ignore local SQLite databases or log files
+*.db
+*.sqlite3
+*.log
+
+# --- OS / IDE ---
+.DS_Store
+.vscode/
+.idea/
+
+# --- Docker ---
+# Usually you keep Dockerfiles, but you might want to ignore 
+# specific local data volumes if they are created
