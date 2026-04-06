@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>♻️ Waste Disposal Assistant</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>♻️ Waste Disposal Assistant</h1>
+    <p class="subtitle">Upload a photo of your waste item and get disposal instructions.</p>
+
+    <div class="upload-box" id="drop-zone">
+      <input type="file" id="file-input" accept="image/*" hidden>
+      <img id="preview" src="" alt="" hidden>
+      <p id="drop-text">📷 Click or drag & drop an image here</p>
+      <button onclick="document.getElementById('file-input').click()">Choose Image</button>
+    </div>
+
+    <button id="analyze-btn" disabled>Analyze Waste</button>
+
+    <div id="result" hidden>
+      <div id="result-category"></div>
+      <div id="result-bin"></div>
+      <ul id="result-instructions"></ul>
+      <div id="result-warning" hidden></div>
+      <div id="result-confidence"></div>
+    </div>
+  </div>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
