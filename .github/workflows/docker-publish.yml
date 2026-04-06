@@ -1,0 +1,35 @@
+name: Build and Publish Docker Image
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: # Allows you to manually trigger the build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          # This must be '.' to let Docker see requirements.txt in the root
+          context: .
+          # This points to your Dockerfile inside the subfolder
+          file: ./docker/Dockerfile
+          push: true
+          # This creates the link under your GitHub Packages
+          tags: ghcr.io/${{ github.repository }}:latest
